@@ -1,0 +1,127 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+#include "traders\dialog.hpp"
+#include "defines.hpp"
+#include "build_recipe_dialog.hpp"
+#include "build_recipe_list_dialog.hpp"
+#include "defines2.hpp"
+///////////////////////////////////////////////////////////////////////////////////////////
+//Above is all the basebuilding
+///////////////////////////////////////////////////////////////////////////////////////////
+respawn = "BASE";
+respawndelay = 15;
+onLoadMission= "DayZ Epoch Chernarus";
+OnLoadIntro = "Welcome to DayZ Epoch Chernarus";
+OnLoadIntroTime = false;
+OnLoadMissionTime = false;
+disabledAI = true;
+disableChannels[]={0,2,6};
+enableItemsDropping = 0;
+#include "R3F_Realism\R3F_Weight\R3F_CfgWeight.h"
+briefing = 0;
+debriefing = 0;
+
+onPauseScript = "";
+loadScreen = "custom\splash.jpg";
+
+class Header
+{
+ gameType = COOP;            //DM, Team, Coop, ...
+ minPlayers = 1;             //min # of players the mission supports
+ maxPlayers = 100;            //Max # of players the mission supports
+};
+
+aiKills = 1;
+diagRadio = 1;
+diagHit = 1;
+
+
+//
+// the loading screen itself
+//
+class DayZ_loadingScreen
+{ 
+	idd = -1;
+	duration = 10e10;
+	fadein = 0;
+	fadeout = 0;
+	name = "loading screen";
+	class controlsBackground
+	{
+		class blackBG : RscText
+		{
+			x = safezoneX;
+			y = safezoneY;
+			w = safezoneW;
+			h = safezoneH;
+			text = "";
+			colorText[] = {0,0,0,0};
+			colorBackground[] = {0,0,0,1};
+		};
+		/*
+		class nicePic : RscPicture
+		{
+			style = 48 + 0x800; // ST_PICTURE + ST_KEEP_ASPECT_RATIO
+			x = safezoneX + safezoneW/2 - 0.25;
+			y = safezoneY + safezoneH/2 - 0.2;
+			w = 0.5;
+			h = 0.4;
+			text = "img\nicePic.paa";
+		};
+		*/
+	};
+	class controls
+	{
+		class Title1 : RscLoadingText
+		{
+			text = "$STR_LOADING"; // "Loading" text in the middle of the screen
+		};
+		class CA_Progress : RscProgress // progress bar, has to have idc 104
+		{
+			idc = 104;
+			type = 8; // CT_PROGRESS
+			style = 0; // ST_SINGLE
+			texture = "\ca\ui\data\loadscreen_progressbar_ca.paa";
+		};
+		class CA_Progress2 : RscProgressNotFreeze // progress bar that will go reverse
+		{
+			idc = 103;
+		};
+		class Name2: RscText // the text on the top-left
+		{
+			idc = 101;
+			x = 0.05;
+			y = 0.029412;
+			w = 0.9;
+			h = 0.04902;
+			text = "";
+			sizeEx = 0.05;
+			colorText[] = {0.543,0.5742,0.4102,1.0};
+		};
+	};
+};
+///////////////////////////////////////////////////////////////////////////////////////////
+class CfgSounds
+{
+    sounds[] = {};
+ 
+    class playerSnoring
+    {
+    name="playerSnoring";
+    sound[]={custom\sfx\snoring.ogg,0.9,1};
+    titles[] = {};
+    };
+};
+///////////////////////////////////////////////////////////////////////////////////////////
+//above is tent healing sound
+///////////////////////////////////////////////////////////////////////////////////////////
+#include "R3F_ARTY_AND_LOG\desc_include.h"
+
+class RscTitles
+{
+	#include "R3F_ARTY_AND_LOG\desc_rsct_include.h"
+};
+///////////////////////////////////////////////////////////////////////////////////////////
+//Above is the towing
+///////////////////////////////////////////////////////////////////////////////////////////
+#include "addons\SARGE\SAR_define.hpp"  //Sarge AI
+///////////////////////////////////////////////////////////////////////////////////////////

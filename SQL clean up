@@ -1,0 +1,17 @@
+Copy and paste like the SQL depolables
+
+DELETE FROM character_data WHERE Alive = 0;
+DELETE FROM object_data WHERE Damage = 1;
+UPDATE traders_data SET qty = 50 WHERE qty = 0;
+
+
+
+Info
+- Del Dead survivor
+DELETE FROM character_data WHERE Alive = 0
+ 
+- Del Destroyed vehicles
+DELETE FROM object_data WHERE Damage = 1
+ 
+- Give item to traders
+UPDATE traders_data SET qty = 50 WHERE qty = 0
